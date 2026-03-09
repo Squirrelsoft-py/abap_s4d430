@@ -5,7 +5,6 @@
 define view entity Z767890_TravelWithCustomer as select from Z_767890_Customer as c
 inner join Z_767890_Travel as t on c.CustomerId = t.CustomerId
 {
-  key c.CustomerId,
   key t.TravelId,
   c.FirstName,
   c.LastName,
@@ -20,5 +19,7 @@ inner join Z_767890_Travel as t on c.CustomerId = t.CustomerId
   t.TotalPrice,
   t.CurrencyCode,
   t.Description,
-  t.Status
+  t.Status,
+  t.CustomerId
 }
+where c.CountryCode = 'DE'
