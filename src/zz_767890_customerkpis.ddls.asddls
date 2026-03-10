@@ -7,6 +7,8 @@
 @Metadata.ignorePropagatedAnnotations: false
 
 define view entity ZZ_767890_CustomerKpis
+with parameters
+P_City : /dmo/city
   as select from Z767890_TravelWithCustomer
 
 {
@@ -33,3 +35,4 @@ group by CustomerId,
          CurrencyCode
 having 
   sum(TotalPrice + BookingFee) >= 5000
+  and City = $parameters.P_City
